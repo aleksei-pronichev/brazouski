@@ -71,8 +71,8 @@ public class LinkedCircularListTest {
     public void testSelfLinkedElement() {
         CircularLinkedList<String> list = new CircularLinkedList<String>();
         list.add("first");
-        assertEquals(list.head.data, list.tail.data);
-        assertEquals(list.head.next.data, list.head.previous.data);
+        assertEquals(list.getHead().getData(), list.getTail().getData());
+        assertEquals(list.getHead().getNext().getData(), list.getHead().getPrevious().getData());
     }
 
     @Test
@@ -81,6 +81,6 @@ public class LinkedCircularListTest {
         list.add("first");
         list.add("second");
         list.remove("first");
-        assertEquals(list.head, list.tail);
+        assertEquals(list.getHead(), list.getTail());
     }
 }

@@ -1,7 +1,7 @@
 import java.util.Iterator;
 
 public class CircularLinkedListIterator<E> implements Iterator<E> {
-    Node<E> current;
+    private Node<E> current;
 
     public CircularLinkedListIterator(Node<E> current) {
         this.current = current;
@@ -14,8 +14,8 @@ public class CircularLinkedListIterator<E> implements Iterator<E> {
 
     @Override
     public E next() {
-        E data = current.data;
-        current = current.next;
+        E data = current.getData();
+        current = current.getNext();
         return data;
     }
 }

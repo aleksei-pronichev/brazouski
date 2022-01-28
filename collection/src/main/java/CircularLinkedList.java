@@ -3,30 +3,21 @@ import java.util.NoSuchElementException;
 
 public class CircularLinkedList<E> implements ICircularLinkedList<E> {
 
-    Node<E> head;
-    Node<E> tail;
-    int modCount = 0;
-    transient int size = 0;
+    private Node<E> head;
+    private transient int size = 0;
 
     @Override
     public void add(E data) {
-        if (data == null) {
-            throw new NullPointerException();
-        }
         if (head == null) {
             Node<E> node = new Node<E>(null, data, null);
-            node.previous = node;
-            node.next = node;
+            node.setPrevious(node);
+            node.setNext(node);
             head = node;
-            tail = node;
         } else {
-            Node<E> newNode = new Node<E>(head, data, tail);
-            head.next = newNode;
-            tail.previous = newNode;
-            tail = newNode;
+            Node<E> newNode = new Node<E>(head, data, head.getPrevious());
+            head.setNext(newNode);
         }
         size++;
-        modCount++;
     }
 
     @Override
@@ -40,21 +31,20 @@ public class CircularLinkedList<E> implements ICircularLinkedList<E> {
 
     @Override
     public E get(int index) {
-        return searchNode(index).data;
+        return searchNode(index).getData();
     }
 
     @Override
     public void clear() {
         for (Node<E> x = head; x != null; ) {
-            Node<E> next = x.next;
-            x.data = null;
-            x.next = null;
-            x.previous = null;
+            Node<E> next = x.getNext();
+            x.setData(null);
+            x.setNext(null);
+            x.setPrevious(null);
             x = next;
         }
-        head = tail = null;
+        head = null;
         size = 0;
-        modCount++;
     }
 
     @Override
@@ -72,28 +62,28 @@ public class CircularLinkedList<E> implements ICircularLinkedList<E> {
         return new CircularLinkedListIterator<E>(head);
     }
 
+    public Node<E> getHead() {
+        return head;
+    }
+
+    public Node<E> getTail() {
+        return head.getPrevious();
+    }
+
     private void unlinkNode(Node<E> node) {
         if (size == 1) {
-            head.data = null;
-            head.previous = null;
-            head.next = null;
-            head = tail = null;
+            head.setData(null);
+            head.setPrevious(null);
+            head.setNext(null);
+            head = null;
             size = 0;
         } else {
-            Node<E> before = node.previous;
-            Node<E> after = node.next;
-            before.next = after;
-            after.previous = before;
-            if (size == 2) {
-                if (node == head) {
-                    head = tail;
-                } else {
-                    tail = head;
-                }
-            }
+            Node<E> before = node.getPrevious();
+            Node<E> after = node.getNext();
+            before.setNext(after);
+            after.setPrevious(before);
             size--;
         }
-        modCount++;
     }
 
     private Node<E> searchNode(int index) {
@@ -106,16 +96,15 @@ public class CircularLinkedList<E> implements ICircularLinkedList<E> {
                 if (index == i) {
                     return currentNode;
                 }
-                currentNode = currentNode.previous;
+                currentNode = currentNode.getPrevious();
             }
         } else {
-            Node<E> currentNode = tail;
+            Node<E> currentNode = head.getPrevious();
             for (int i = size - 1; i >= 0; i--) {
                 if (index == i) {
                     return currentNode;
-
                 }
-                currentNode = currentNode.next;
+                currentNode = currentNode.getNext();
             }
         }
         throw new NoSuchElementException();
@@ -123,10 +112,10 @@ public class CircularLinkedList<E> implements ICircularLinkedList<E> {
 
     private Node<E> searchNode(E data) {
         for (Node<E> x = head; x != null; ) {
-            if (x.data.equals(data)) {
+            if (x.getData().equals(data)) {
                 return x;
             }
-            x = x.next;
+            x = x.getNext();
         }
         throw new NoSuchElementException();
     }
