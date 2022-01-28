@@ -3,11 +3,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class Horse{
+public class Horse {
 
-    public String name;
-    public Integer speed;
-    public Integer distance = 0;
+    private String name;
+    private Integer speed;
+    private Integer distance = 0;
 
     public Horse(String name, Integer speed) {
         this.name = name;

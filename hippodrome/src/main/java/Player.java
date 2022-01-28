@@ -10,6 +10,6 @@ public class Player {
     private Integer cash;
 
     public Player(){
-        cash = 0;
+        cash = 100;
     }
 }
