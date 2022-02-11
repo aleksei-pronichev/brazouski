@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="LinkedCircularListTest" time="0.021" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="LinkedCircularListTest" time="0.016" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="11.0.14+9-LTS"/>
     <property name="sun.boot.library.path" value="C:\Program Files\BellSoft\LibericaJDK-11\bin"/>
     <property name="user.country.format" value="BY"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\37544\IdeaProjects\brazouski"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\37544\IdeaProjects\brazouski\collection"/>
     <property name="java.vm.vendor" value="BellSoft"/>
     <property name="java.vendor.url" value="https://bell-sw.com/"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="user.country" value="RU"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\37544\IdeaProjects\brazouski"/>
+    <property name="user.dir" value="C:\Users\37544\IdeaProjects\brazouski\collection"/>
     <property name="java.vm.compressedOopsMode" value="32-bit"/>
     <property name="java.runtime.version" value="11.0.14+9-LTS"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
@@ -64,11 +64,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="LinkedCircularListTest" name="testCorrectLinksAfterRemoving" time="0.016"/>
+  <testcase classname="LinkedCircularListTest" name="testCorrectLinksAfterRemoving" time="0.014"/>
   <testcase classname="LinkedCircularListTest" name="testOrder" time="0"/>
   <testcase classname="LinkedCircularListTest" name="testSelfLinkedElement" time="0"/>
   <testcase classname="LinkedCircularListTest" name="testSize" time="0"/>
   <testcase classname="LinkedCircularListTest" name="clearShouldReturnZeroSize" time="0"/>
-  <testcase classname="LinkedCircularListTest" name="testRemoveToZeroSize" time="0.005"/>
+  <testcase classname="LinkedCircularListTest" name="testRemoveToZeroSize" time="0.002"/>
   <testcase classname="LinkedCircularListTest" name="testIsEmptyCorrecting" time="0"/>
 </testsuite>
