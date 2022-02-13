@@ -1,3 +1,6 @@
+# Intelliji Idea file
+*.iml
+
 # Compiled class file
 *.class
 
